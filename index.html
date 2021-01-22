@@ -10,30 +10,39 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-  <div id="canvas">
+<body style="border: 1px solid red;">
+  <canvas id="canvas" width="300" height="300">
 
-  </div>
+  </canvas>
   <script>
+    let canvas = document.getElementById("canvas");
+    canvas.width = document.documentElement.clientWidth;
+    canvas.height = document.documentElement.clientHeight;
+    // console.log('canvas.width:' + canvas.width);
+    // console.log('canvas.height:' + canvas.height);
+    let ctx = canvas.getContext("2d");
+
+    ctx.fillStyle = "black";
+    ctx.strokeStyle = 'none';
+
+    let isPainting = false;
+    canvas.onmousedown = () => {
+      isPainting = true;
+    }
     canvas.onmousemove = (e) => {
-      // console.log调试大法
-      // console.log(e)
-      console.log(e.clientX)
-      console.log(e.clientY)
-      let div = document.createElement("div")
-      div.style.position = "absolute"
-      div.style.left = e.clientX + 'px'
-      div.style.top = e.clientY + 'px'
-      div.style.height = '4px'
-      div.style.width = '4px'
-      div.style.backgroundColor = 'blue'
-      div.style.marginLeft = '-2px'
-      div.style.marginTop = '-2px'
-      div.style.borderRadius = '50%'
-      canvas.appendChild(div);
+      if (isPainting === true) {
+        ctx.beginPath();
+        ctx.arc(e.clientX, e.clientY, 10, 0, 2 * Math.PI, false);
+        ctx.stroke();
+        ctx.fill();
+      } else {
+        console.log("什么都不做");
+      }
+    }
+    canvas.onmouseup = () => {
+      isPainting = false;
     }
   </script>
 </body>
 
 </html>
-!

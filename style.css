@@ -3,9 +3,34 @@
   padding: 0;
   box-sizing: border-box;
 }
+ul,
+ol {
+  list-style: none;
+}
 #canvas {
   /* height: 100vh;
   width: 100vw; */
   /* border: 1px solid blue; */
   display: block;
+}
+.color,
+.weight {
+  border: 1px solid blue;
+  padding: 10px;
+  position: absolute;
+  border-radius: 5px;
+  text-align: center;
+}
+.color {
+  left: 10px;
+  top: 10px;
+}
+.weight {
+  left: 10px;
+  bottom: 50%;
+}
+.color > ul > li,
+.weight > ul > li {
+  cursor: pointer;
+  border: 1px solid black;
 }

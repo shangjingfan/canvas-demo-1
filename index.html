@@ -11,6 +11,22 @@
 </head>
 
 <body>
+  <div class="color">
+    <p>画笔颜色</p>
+    <ul>
+      <li id="yellow">黄色</li>
+      <li id="red">红色</li>
+      <li id="blue">蓝色</li>
+    </ul>
+  </div>
+  <div class="weight">
+    <p>画笔粗细</p>
+    <ul>
+      <li id="bold">粗</li>
+      <li id="normal">中</li>
+      <li id="thin">细</li>
+    </ul>
+  </div>
   <canvas id="canvas" width="300" height="300">
 
   </canvas>
@@ -19,8 +35,9 @@
     canvas.width = document.documentElement.clientWidth;
     canvas.height = document.documentElement.clientHeight;
     let ctx = canvas.getContext("2d");
-    ctx.fillStyle = 'black';
-    ctx.strokeStyle = 'black';
+    // ctx.fillStyle = 'black';
+    // ctx.strokeStyle = 'black';
+    ctx.lineWidth = 4;
 
 
     let isPainting = false;
@@ -56,7 +73,7 @@
     }
 
     function drawLine(x1, y1, x2, y2) {
-      ctx.lineWidth = 8;
+
       ctx.beginPath();
       ctx.lineCap = "round"
       ctx.moveTo(x1, y1);
@@ -64,6 +81,24 @@
       ctx.stroke();
     }
 
+    yellow.onclick = () => {
+      ctx.strokeStyle = 'yellow';
+    }
+    red.onclick = () => {
+      ctx.strokeStyle = 'red';
+    }
+    blue.onclick = () => {
+      ctx.strokeStyle = 'blue';
+    }
+    thin.onclick = () => {
+      ctx.lineWidth = 4;
+    }
+    bold.onclick = () => {
+      ctx.lineWidth = 12;
+    }
+    normal.onclick = () => {
+      ctx.lineWidth = 8;
+    }
   </script>
 </body>
 
